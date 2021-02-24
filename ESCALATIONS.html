@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ESCALATIONS 1.0.6</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+		*{
+			font-family: 'Roboto', sans-serif;	
+			z-index: 1;
+		}
+		label{
+			color: white;
+			background-color: #F0B71C;
+		}
+
+	</style>
+	<script>
+		var clauEmail = 'Claudia.Manjarres@exeterfinance.com';
+		var macaEmail = 'Maria.Delahoz@exeterfinance.com';
+		var allmanagers = 'Maria.Delahoz@exeterfinance.com; Claudia.Manjarres@exeterfinance.com; Jesus.Lastra@exeterfinance.com; Sabrina.Mendoza@exeterfinance.com; Eduardo.Montero@exeterfinance.com;'
+	</script>
+</head>
+<body>
+<div id="botonmovible" style="position: fixed;top: 25%;right: 16px; z-index: 0;" >
+	<span id="botonmovibleheader" class="p-3 border border-succsess rounded">
+		<span class="btn btn-info" onmousedown="window.open('index.html','_self')" ><img src="arrow.svg"> go back</span>
+	</span>
+</div>
+	<div class="pl-3 border pb-3 bg-secondary rounded-bottom">
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#exte" onmousedown="closeAll(0,'mbtt')">Extensions</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#pmnt" onmousedown="closeAll(1,'mbtt')">Payment Allocation</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#crer" onmousedown="closeAll(2,'mbtt')">Credit Report</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#ttlr" onmousedown="closeAll(3,'mbtt')">Title Tracket Request</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#volr" onmousedown="closeAll(4,'mbtt')">Voluntary Surrender</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#fees" onmousedown="closeAll(5,'mbtt')">Fees Removal</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#rqad" onmousedown="closeAll(6,'mbtt')">Request Additional Documentation</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#otor" onmousedown="closeAll(7,'mbtt')">Other type of Request</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#otor" onmousedown="closeAll(8,'mbtt')">Overage Check</button>
+		<button data-toggle="collapse" class=" mt-3 btn btn-primary" data-target="#cptp" onmousedown="closeAll(9,'mbtt')">CPTP</button>
+	</div>
+		
+
+	<div id="exte" class="collapse pl-4 pt-2 mbtt show" >
+		<button data-toggle="collapse" class="btn btn-success" data-target="#een" onmousedown="closeAll(0,'mbta')">Extension Exception</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#eep" onmousedown="closeAll(1,'mbta')">Extension Exception +8</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#rsf" onmousedown="closeAll(2,'mbta')">Resend the Form</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#fns" onmousedown="closeAll(3,'mbta')">Form not Send</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#exc" onmousedown="closeAll(4,'mbta')">Extension Cancel</button>
+		<div id="een" class="collapse pl-4 pt-2 mbta show">
+			<label class="border rounded p-3 " for="sups1">Select your sup</label>
+			<select id="sups1" name="sups" class="form-control col-3">
+				<option value="Maria.Delahoz@exeterfinance.com">Maca</option>
+				<option value="Claudia.Manjarres@exeterfinance.com">Claudia</option>			
+			</select>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="bext">
+ACC #: 
+
+EXTENSION EXCEPTION 
+
+RFD: 
+Number Months Extended: 
+Garage Address: 
+NDD: 
+Email or Fax: 
+Information communicated to the customer:
+* Extensions not covered by Gap
+* Extension agreement form needs to be signed and returned
+* Daily interest accrues
+* Maturity Date is extended: </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = document.getElementById('sups1').value;
+				var subject= 'EXTENSION EXCEPTION';
+		        var body = document.getElementById('bext').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div>
+		
+
+
+
+
+		<div id="eep" class="collapse pl-4 pt-2 mbta">
+			<label class="border rounded p-3 " for="sups2">Select your sup</label>
+			<select id="sups2" name="sups" class="form-control col-3">
+				<option value="Maria.Delahoz@exeterfinance.com">Maca</option>
+				<option value="Claudia.Manjarres@exeterfinance.com">Claudia</option>			
+			</select>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;" id="beep">
+EXCEPTION EXTENSION  8+
+
+ACCOUNT #:
+SW: 
+CURRENT DPD: 
+# OF MTHS REQUESTED: 
+# OF CURRENT EXT ON ACCOUNT: 
+RFD: 
+POE:                   
+PHYSICAL ADDRESS:
+COVID-19: ( yes or no)
+RECEIVING STIM PKG?: ( yes or no)
+OTHER INCOME: ( yes or no)
+NDD IF APPROVED:
+CAN THEY MAKE NEXT PAYMENT?: ( yes or no)
+EXT FORM NEEDED: ( yes or no)
+BUYER EMAIL/FAX: 
+ADVISED - EXT ARE NOT GUARANTEED: YES
+SENT FOR APPROVAL TO: 
+
+ADVISED BUYER OF THE FOLLOWING:
+GAP DOESN'T COVER EXTENDED MONTHS
+DAILY INTEREST ACCUES
+MATURITY DATE IS EXTENDED
+EXT FORM NEED TO BE SIGNED AND RETURNED (IF APPLICABLE): </textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = document.getElementById('sups2').value;
+				var subject= 'EXCEPTION EXTENSION  8+';
+		        var body = document.getElementById('beep').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+
+
+		<div id="rsf" class="collapse pl-4 pt-2 mbta">
+			<label class="border rounded p-3 " >MANAGER: claudia</label><br>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;" id="brsf">
+Account #
+Extension Form Method: fax/email
+Customer's phone number:
+Specify any additional details:</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'Claudia.Manjarres@exeterfinance.com';
+				var subject= 'RESEND EXTENSION FORM';
+		        var body = document.getElementById('brsf').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+
+
+		<div id="fns" class="collapse pl-4 pt-2 mbta">
+			<label class="border rounded p-3 ">MANAGER: claudia</label><br>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;  " id="bfns">
+Account #
+Extension Form Method: fax/email
+Customer's phone number:
+Specify any additional details:</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'Claudia.Manjarres@exeterfinance.com';
+				var subject= 'EXTENSION FORM NOT SEND';
+		        var body = document.getElementById('bfns').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+
+
+		<div id="exc" class="collapse pl-4 pt-2 mbta">
+			<label class="border rounded p-3 " >MANAGER: maca</label><br>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;" id="bexc">
+Account#
+Reason for cancellation:       
+Customer’s phone number:
+
+-------------------------------------------------------------------
+Example of reason for cancelation: Submitted incorrect # of months
+</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'Maria.Delahoz@exeterfinance.com';
+				var subject= 'CANCEL EXTENSION';
+		        var body = document.getElementById('bexc').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+
+	<div id="pmnt" class="collapse mbtt">
+		<div class="mt-3 ml-3">
+			<label class="border rounded p-3 " for="sups2">MANAGER: maca</label><br>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;" id="cpmn">
+ACC #: 
+
+Next Due date: 
+Payment amount to reallocate: 
+Payment processed date: 
+Specify any additional details:	</textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'Maria.Delahoz@exeterfinance.com';
+				var subject= 'PAYMENT ALLOCATION';
+		        var body = document.getElementById('cpmn').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+		        // creditbureaudisputes@exeterfinance.com
+			" >Enviar</div>
+		</div>
+			
+
+	</div>
+
+
+
+
+
+	<div id="crer" class="collapse pl-4 pt-2 mbtt" >
+		<button data-toggle="collapse" class="btn btn-success" data-target="#cin" onmousedown="closeAll(0,'mbtb')">Credit  Inquiry Dispute- Non Customer</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#cic" onmousedown="closeAll(1,'mbtb')">Credit  Inquiry Dispute- Customer</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#caa" onmousedown="closeAll(2,'mbtb')">Adverse Action- Non Customer</button>
+		
+		<div id="cin" class="collapse mbtb"><br>
+			<label class="border rounded p-3 ">NON CUSTOMER</label><br>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;  " id="dcrn">
+Applicant's identification (CID) number: 
+Applicant's full name: 
+Applicant's address: 
+Reference number (from the letter) : 
+Applicant's Social Security Number or application ID: 
+Applicant's contact number: 
+Specific reason for investigation: 
+Is the applicant submitting any supporting documents: Y/N</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'creditbureaudisputes@exeterfinance.com';
+				var subject= 'Credit  Inquiry Dispute- Non Customer';
+		        var body = document.getElementById('dcrn').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+		<div id="cic" class="collapse mbtb"><br>
+			<li class="list-group-item">Inside SHAW Collections Submit activity code <code class="font-weight-bold" style="font-size: 24px;">CBRI</code> with the following information</li>
+			<li class="list-group-item">
+Date of the report: <br>
+Customer's mailing address: <br>
+Customer's phone number: <br>
+Specify details of inaccurate report: <br>
+			</li>
+			<li class="list-group-item">Notify the applicant that their request is being submitted for processing and they should receive a written response within 3-5 Bussiness Days.</li>
+			
+		</div>
+		<div id="caa" class="collapse mbtb"><br>
+			<label class="border rounded p-3 ">Adverse Action- Non Customer</label><br>
+			<button data-toggle="collapse" class="btn btn-secondary" data-target="#sp1">Step 1</button>
+			<div id="sp1" class="collapse">
+				<li class="list-group-item">Ask fact finding questions to determine if applicant education is needed:<br>
+					"Did you recently shop for a new vehicle?" <br>
+					"Did you complete a credit application providing your Social Security number?" <br>and go to Step 2
+				</li>
+				
+			</div>
+			<button data-toggle="collapse" class="btn btn-secondary" data-target="#sp2">Step 2</button>
+			<div id="sp2" class="collapse">
+				<li class="list-group-item">If the applicant answers "yes" to the question(s) above, advise the following:<br>
+					1. It is common for a dealership to submit an applicant’s information to multiple lenders to find the best rate possible on the buyer’s behalf. This may result 					in an inquiry from a company unfamiliar to the applicant. 	<br>					
+					2.Credit scores will count multiple Car Loan Inquiries within a short period as one, so there is no additional impact to a customer's FICO score.<br><br>
+					Note: This is not considered a credit dispute. Do not request the applicant to submit in writing. Further investigation is not required. 						
+				</li>
+				<li class="list-group-item"> BUT if the applicant answers "no" to the questions above, does not know who the dealership is, or is not satisfied do Step 3</li>
+			</div>
+			<button data-toggle="collapse" class="btn btn-secondary" data-target="#sp3">Step 3</button>
+			<div id="sp3" class="collapse">
+				<br>Send the email request
+				<br>Notify the applicant that their request is being submitted for processing and they should receive a written response within 30 days. <br>
+
+				<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;" id="dcaa">
+Applicant's identification (CID) number: 
+Applicant's full name: 
+Applicant's address: 
+Reference number (from the letter) : 
+Applicant's Social Security Number or application ID: 
+Applicant's contact number: 
+Specific reason for investigation: 
+Is the applicant dubmitting any supporting documents: Y/N</textarea>
+
+				<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+					var manager = 'creditbureaudisputes@exeterfinance.com';
+					var subject= 'Adverse Action- Non Customer';
+			        var body = document.getElementById('dcaa').value ;
+			        var uri = 'mailto:'+manager+'?subject=';
+			        uri += encodeURIComponent(subject);
+			        uri += '&body=';
+			        uri += encodeURIComponent(body);
+			        window.open(uri);
+				" >Enviar</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+	<div id="ttlr" class="collapse pl-4 pt-2 mbtt">
+		<button data-toggle="collapse" class="btn btn-success" data-target="#tnr" onmousedown="closeAll(0,'mbtc')">Title sent- Not received</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#tns" onmousedown="closeAll(1,'mbtc')">Title not requested- Never sent</button>
+		<div id="tnr" class="collapse mbtc"><br>
+			<label class="border rounded p-3 ">NOT RECEIVED</label><br>
+			<textarea class="form-control col-6" rows="15" cols="100" style="text-align: left;  " id="etnr">
+ACC #:
+
+Account Payoff Date:					
+Title sent date: 					
+Customer's address:					
+Customer's phone number:					
+Specify any additional details:					
+			</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'Claudia.Manjarres@exeterfinance.com';
+				var subject= 'Title sent- Not received';
+		        var body = document.getElementById('etnr').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+		<div id="tns" class="collapse mbtc " ><br>
+			<label class="border rounded p-3 ">NEVER SENT</label><br>
+			<textarea rows="15" class="form-control col-6" cols="100" style="text-align: left;  " id="etns">
+ACC #:
+
+Account Payoff Date:			
+Customer's address:			
+Customer's phone number:			
+Specify any additional details: 					
+			</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'Claudia.Manjarres@exeterfinance.com';
+				var subject= 'Title never sent';
+		        var body = document.getElementById('etns').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div id="volr" class="collapse pl-4 pt-2 mbtt">
+			<label class="border rounded p-3 " for="sups3">Select your sup</label>
+			<select id="sups3" name="sups" class="form-control col-3">
+				<option value="Maria.Delahoz@exeterfinance.com">Maca</option>
+				<option value="Claudia.Manjarres@exeterfinance.com">Claudia</option>			
+			</select>
+
+			<textarea rows="20" class="form-control col-6" style="text-align: left;" id="fvlr">
+ACC #:
+Vol repo reason:
+
+Verified Demographic Information:
+ 
+Current Vehicle Location:
+ 
+Best contact person:
+ 
+Best contact phone number:
+ 
+Vehicle Condition: 
+
+The method the customer would like to receive Vol Repo Form (Fax/Email):
+ 
+Indicate that both buyer and co-buyer signatures are needed on the form
+That the customer was advised of the following ramifications:
+- Effects of the customer's credit bureau reports
+-They are responsible for the deficiency balance and any billable fees per our policy
+- An overage check is sent to the customer if a surplus balance remains from the auto auction sale
+- Interest accrues until the vehicle is sold
+- The customer is still responsible for all late fees until vehicle is sold
+- They must leave insurance on the vehicle until vehicle is recovered
+- Email address(es) (if via DocuSign)"	
+	
+Advise the customer about the complete process for voluntary surrender, advise to expect callback from manager to continue the process.	 </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = document.getElementById('sups3').value;
+				var subject= 'VOL REPO';
+		        var body = document.getElementById('fvlr').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+
+	</div>
+
+
+
+
+
+	<div id="fees" class="collapse pl-4 pt-2 mbtt">
+		<button data-toggle="collapse" class="btn btn-success" data-target="#wlf" onmousedown="closeAll(0,'mbtd')">Waive late fees</button>
+		<button data-toggle="collapse" class="btn btn-success" data-target="#wms" onmousedown="closeAll(1,'mbtd')">Waive misc fees</button>
+		<div id="wlf" class="collapse mbtd"><br>
+			<label class="border rounded p-3 ">LATE FEE</label><br>
+			<textarea rows="15" class="form-control col-6" cols="100" style="text-align: left;  " id="gwlf">
+ACC #:
+Reason for removal:
+
+Late fee amount: 					
+			</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'maria.delahoz@exeterfinance.com';
+				var subject= 'Waive late fees';
+		        var body = document.getElementById('gwlf').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+		<div id="wms" class="collapse mbtd"><br>
+			<label class="border rounded p-3 ">MISC FEES</label><br>
+			<textarea rows="15" class="form-control col-6" cols="100" style="text-align: left;  " id="gwms">
+ACC #:
+
+Reason for removal:
+Misc fee amount: 					
+			</textarea>
+
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = 'maria.delahoz@exeterfinance.com';
+				var subject= 'Waive misc fees';
+		        var body = document.getElementById('gwms').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Enviar</div>
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+
+	<div id="rqad" class="collapse pl-4 pt-2 mbtt">
+		<label class="border rounded p-3 ">2nd Documentation Request</label><br>
+		<textarea rows="15" class="form-control col-6" cols="100" style="text-align: left;  " id="hrad">
+ACC #:
+Document Needed:
+Method:
+Reason for request: 					
+		</textarea>
+
+		<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+			var manager = 'maria.delahoz@exeterfinance.com';
+			var subject= '2nd Documentation Request';
+	        var body = document.getElementById('hrad').value ;
+	        var uri = 'mailto:'+manager+'?subject=';
+	        uri += encodeURIComponent(subject);
+	        uri += '&body=';
+	        uri += encodeURIComponent(body);
+	        window.open(uri);
+		" >Enviar</div>
+
+	</div>
+
+
+
+
+
+	<div id="otor" class="collapse pl-4 pt-2 mbtt">
+		
+		<label class="border rounded p-3 ">Other Type of Request</label><br>
+		<textarea rows="15" class="form-control col-6" cols="100" style="text-align: left;  " id="iotr">
+ACC #: 
+Request Type: 
+Customer's phone number: 					
+		</textarea>
+
+		<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+			var manager = 'maria.delahoz@exeterfinance.com';
+			var subject= 'Other type of request';
+	        var body = document.getElementById('iotr').value ;
+	        var uri = 'mailto:'+manager+'?subject=';
+	        uri += encodeURIComponent(subject);
+	        uri += '&body=';
+	        uri += encodeURIComponent(body);
+	        window.open(uri);
+
+		" >Enviar</div>
+	</div>
+
+	<div id="ovrg" class="collapse mbtt mt-3 ml-3">
+		<label class="border rounded p-3 ">Overage Check</label><br>
+		<textarea rows="15" class="form-control col-6" cols="100" style="text-align: left;  " id="jovr">
+ACC #: 
+Overage Check
+Payoff Date: 
+Overage Amount: 
+Issue: 
+		</textarea>
+
+		<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+			var manager = 'maria.delahoz@exeterfinance.com';
+			var subject= 'Overage Check';
+	        var body = document.getElementById('jovr').value ;
+	        var uri = 'mailto:'+manager+'?subject=';
+	        uri += encodeURIComponent(subject);
+	        uri += '&body=';
+	        uri += encodeURIComponent(body);
+	        window.open(uri);
+
+		" >Enviar</div>
+	</div>
+
+
+	<div id="cptp" class="collapse mbtt pl-4">
+		<button data-toggle="collapse" class="btn btn-success mt-2" data-target="#wri" onmousedown="closeAll(0,'mbte')">Wrong Input (Agent Mistake)</button>
+		<button data-toggle="collapse" class="btn btn-success mt-2" data-target="#mdf" onmousedown="closeAll(1,'mbte')">Moving Date Forward (Rearrangement)</button>
+		<button data-toggle="collapse" class="btn btn-success mt-2" data-target="#tpp" onmousedown="closeAll(2,'mbte')">Two Part PTP (Paying Less and setting a PTP2)</button>
+		<button data-toggle="collapse" class="btn btn-success mt-2" data-target="#cpo" onmousedown="closeAll(3,'mbte')">Cure Plan Offer</button>
+		<button data-toggle="collapse" class="btn btn-success mt-2" data-target="#mtt" onmousedown="closeAll(4,'mbte')">More than 30 DPD (Open PTP setting PTP2 for the other bucket)</button>
+		<button data-toggle="collapse" class="btn btn-success mt-2" data-target="#pna" onmousedown="closeAll(5,'mbte')">PTP not authorized or set beyond guidelines:</button>
+		<div id="wri" class="collapse pl-4 pt-2 mbte">
+			<label class="border rounded p-3 " for="sups1">Wrong Input (Agent Mistake)</label><br>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="k1">
+ACC #: 
+Incorrect input (Date/Amount): 
+Correct input (Date/Amount):
+ </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = allmanagers;
+				var subject= 'Wrong Input (Agent Mistake)';
+		        var body = document.getElementById('k1').value ;
+
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div>
+		<div id="mdf" class="collapse pl-4 pt-2 mbte">
+			<label class="border rounded p-3 " for="sups1">Moving Date Forward</label><br>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="k2">
+ACC #: 
+Current Date:
+New Date:
+ </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = allmanagers;
+				var subject= 'Moving Date Forward';
+		        var body = document.getElementById('k2').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div>
+		<div id="tpp" class="collapse pl-4 pt-2 mbte">
+			<label class="border rounded p-3 " for="sups1">Two Part PTP (Paying Less and setting a PTP2)</label><br>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="k3">
+ACC #: 
+Current Amount: 
+New Date and Amounts: 
+Paymentus Confirmation #:
+ </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = allmanagers;
+				var subject= 'Two Part PTP (Paying Less and setting a PTP2)';
+		        var body = document.getElementById('k3').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div>
+		<div id="cpo" class="collapse pl-4 pt-2 mbte">
+			<label class="border rounded p-3 " for="sups1">Cure Plan Offer</label><br>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="k4">
+ACC #: 
+A cure plan will be offer to the customer.
+ </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = allmanagers;
+				var subject= 'Cure Plan Offer';
+		        var body = document.getElementById('k4').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div>
+		<div id="mtt" class="collapse pl-4 pt-2 mbte">
+			<label class="border rounded p-3 " for="sups1">More than 30 DPD (Open PTP setting PTP2 for the other bucket)</label><br>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="k5">
+ACC #: 
+Date and Amount for PTP2: 
+Paymentus Confirmation # PTP1: 
+Paymentus Confirmation # PTP2:
+ </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = allmanagers;
+				var subject= 'More than 30 DPD (Open PTP setting PTP2 for the other bucket)';
+		        var body = document.getElementById('k5').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div> 
+		<div id="pna" class="collapse pl-4 pt-2 mbte">
+			<label class="border rounded p-3 " for="sups1">PTP not authorized or set beyond guidelines</label><br>
+
+			<textarea rows="15" class="form-control col-6" style="text-align: left;" id="k6">
+ACC #: 
+Name of the Agent: 
+*wait for instructions*
+ </textarea>
+			<div class="btn btn-danger" style="cursor: pointer;" onmousedown="
+				var manager = allmanagers;
+				var subject= 'PTP not authorized or set beyond guidelines';
+		        var body = document.getElementById('k6').value ;
+		        var uri = 'mailto:'+manager+'?subject=';
+		        uri += encodeURIComponent(subject);
+		        uri += '&body=';
+		        uri += encodeURIComponent(body);
+		        window.open(uri);
+			" >Create</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<script>
+	   	function closeAll(este,clase) {
+	    	
+	    	var mbtt = document.getElementsByClassName(clase);
+	    	
+	    	if (mbtt[este].style.display == 'none') {
+	    		for (var i = 0; i < mbtt.length; i++) {
+	    			mbtt[i].style.display = 'none';
+		    	}
+		    	mbtt[este].style.display = 'block';	
+
+	    	} else{
+	    		for (var i = 0; i < mbtt.length; i++) {
+	    			mbtt[i].style.display = 'none';
+		    	}
+	    	}
+	    
+		    	
+	    	
+	    	
+	    	
+	    	/*if (mbtt[este].style.display == 'block' || mbtt[este].style.display = ''}) {
+	    		mbtt[este].style.display = 'none'
+	    	} else{
+	    		mbtt[este].style.display = 'block';	
+	    	}
+	    	*/
+	    	
+	    }
+
+dragElement(document.getElementById("botonmovible"));
+
+	function dragElement(elmnt) {
+	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+	if (document.getElementById(elmnt.id + "header")) {
+	// if present, the header is where you move the DIV from:
+	document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+	} else {
+	// otherwise, move the DIV from anywhere inside the DIV:
+	elmnt.onmousedown = dragMouseDown;
+	}
+
+	function dragMouseDown(e) {
+	e = e || window.event;
+	e.preventDefault();
+	// get the mouse cursor position at startup:
+	pos3 = e.clientX;
+	pos4 = e.clientY;
+	document.onmouseup = closeDragElement;
+	// call a function whenever the cursor moves:
+	document.onmousemove = elementDrag;
+	}
+
+	function elementDrag(e) {
+	e = e || window.event;
+	e.preventDefault();
+	// calculate the new cursor position:
+	pos1 = pos3 - e.clientX;
+	pos2 = pos4 - e.clientY;
+	pos3 = e.clientX;
+	pos4 = e.clientY;
+	// set the element's new position:
+	elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+	elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+	}
+
+	function closeDragElement() {
+	// stop moving when mouse button is released:
+	document.onmouseup = null;
+	document.onmousemove = null;
+	}
+	}	    
+	</script>
+</body>
+</html>

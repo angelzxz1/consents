@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consents</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+		*{
+			font-family: 'Roboto', sans-serif;	
+		}
+	</style>
+	<script>
+		var extStatus = '';
+		var iplePay = 'NOT';
+		var stateform = '';
+		var rstCon = false;
+	</script>
+</head>
+<body>
+<div id="botonmovible" style="position: fixed;top: 25%;right: 16px; z-index: 0;" >
+	<span id="botonmovibleheader" class="p-3 border border-succsess rounded">
+		<span class="btn btn-info" onmousedown="window.open('index.html','_self')" ><img src="arrow.svg"> go back</span>
+	</span>
+</div>
+
+
+<div class="mt-2 ml-3">
+	<div class="btn btn-secondary " onmousedown="cambiar(0, 'aaa'); resetCon();">Spanish</div>
+	<div class="btn btn-secondary " onmousedown="cambiar(1, 'aaa'); resetCon();">English</div>
+
+<script>
+	function resetCon() {
+		if (rstCon) {
+			extStatus = '';
+			iplePay = 'NOT';
+			stateform = '';
+			document.getElementById('bb').style.display = 'none';
+			document.getElementById('cc').style.display = 'none';
+			document.getElementById('zz').style.display = 'none';
+			document.getElementById('dd').style.display = 'none';
+			var aes = document.getElementsByClassName('aaa');
+			var bes = document.getElementsByClassName('bb');
+			var ces = document.getElementsByClassName('cc');
+			var des = document.getElementsByClassName('dd');
+			var zes = document.getElementsByClassName('zz');
+			var cones = document.getElementsByClassName('consents');
+			
+
+			for (var i = 0; i < bes.length; i++) {
+				bes[i].style.display = 'inline-block';
+			}
+			console.log(bes[0].style.display);
+			for (var i = 0; i < ces.length; i++) {
+				ces[i].style.display = 'inline-block';
+			}
+			for (var i = 0; i < des.length; i++) {
+				des[i].style.display = 'inline-block';
+			}
+			for (var i = 0; i < zes.length; i++) {
+				zes[i].style.display = 'inline-block';
+			}
+			for (var i = 0; i < cones.length; i++) {
+				cones[i].style.display = 'none';
+			}
+			for (var i = 0; i < aes.length; i++) {
+				aes[i].style.display = 'inline-block';
+			}
+		}
+		rstCon = true;
+	}
+</script>
+
+
+
+</div>
+<div class="collapse aaa mt-2 ml-3">
+	<div class="mt-2 ml-3">
+		<label>Extension status </label><br>
+		<div class="btn border bg-info text-light zz bb" onmousedown="disablebuttons(this, 'bb');extStatus = 'Y';">YES</div>
+		<div class="btn border bg-info text-light zz bb" onmousedown="disablebuttons(this, 'zz');extStatus = 'C';">CONDITIONAL</div>
+		<div class="btn border bg-info text-light zz bb" onmousedown="disablebuttons(this, 'bb');extStatus = 'N';">NO</div>
+	</div>
+	<div class="collapse mt-2 ml-3" id="zz">
+		<label>Can make a payment?</label><br>
+		<div class="btn border bg-info text-light cc" onmousedown="disablebuttons(this, 'cc');iplePay = 'Y';">YES</div>
+		<div class="btn border bg-info text-light cc" onmousedown="disablebuttons(this, 'cc');iplePay = 'N';">NO</div>
+	</div>
+	<div class="collapse mt-2 ml-3" id="bb">
+		<label>is it listed on one of these?</label><br>
+		<div class="btn border bg-info text-light dd" onmousedown="disablebuttons(this, 'dd');stateform = 'Y'; consentChosed();">YES</div>
+		<div class="btn border bg-info text-light dd" onmousedown="disablebuttons(this, 'dd');stateform = 'N'; consentChosed();">NO</div>
+	</div>
+	<div class="collapse mt-2 ml-3" id="cc">
+		<label>is it listed on one of these? iple</label><br>
+		<div class="btn border bg-info text-light dd" onmousedown="disablebuttons(this, 'dd');stateform = 'Y'; consentChosed();">YES</div>
+		<div class="btn border bg-info text-light dd" onmousedown="disablebuttons(this, 'dd');stateform = 'N'; consentChosed();">NO</div>
+	</div>
+</div>
+<div class="collapse mt-2 ml-3 modal" id="dd">
+	<div></div>
+	<span class="close">&times;</span>
+	<div class="collapse consents col-8" id="consent1">Entendemos que desea extender sus pagos mensuales del mes/los meses Mes/Año al Mes/Año <br><br>
+		La extensión está sujeta a su capacidad de hacer todos sus pagos futuros. <br><br>
+		¿Puede confirmar que esta extensión le va a permitir hacer sus siguientes pagos? <br><br>
+		Usted entiende que tiene un contrato de interés simple, significa que los intereses se acumulan
+		diariamente. Los intereses continuarán acumulándose cada día sobre balance principal
+		adeudado incluido durante el período de extensión. Esto significa que después de que se
+		procesa la extensión, cuando usted haga sus pagos, estos se aplicaran primero al interés
+		adeudado en la cuenta y si existe algún excedente de dinero será aplicado al principal. <br><br>
+		Esto dará como resultado que su cuenta acumule más intereses durante el tiempo de contrato
+		a diferencia que no tomara la extensión.<br><br>
+		Su contrato se extenderá, se le dará una nueva fecha de finalización de mm/dd/aa y podría tener
+		un saldo pendiente en esta fecha debido al interés adicional acumulado en la cuenta.<br><br>
+		(Mencionar la fecha en el espacio en blanco usando el formato correspondiente)
+		Su próximo pago vence el mm/dd/ aa<br><br>
+		¿Contamos con su autorización para procesar esta extensión?
+
+
+	</div>
+	<div class="collapse consents" id="consent2">consent2</div>
+	<div class="collapse consents" id="consent3">consent3</div>
+	<div class="collapse consents" id="consent4">consent4</div>
+	<div class="collapse consents" id="consent5">consent5</div>
+	<div class="collapse consents" id="consent6">consent6</div>
+</div>
+
+<script>
+	function cambiar(numero, clase) {
+	 	var cls = document.getElementsByClassName(clase);
+	 	for (var i = 0; i < cls.length; i++) {
+	 		cls[i].style.display = 'none';
+	 	}
+	 	cls[numero].style.display = 'block';
+	}
+	function disablebuttons(boton, id) {
+		var cls = document.getElementsByClassName(id);
+		for (var i = 0; i < cls.length; i++) {
+	 		cls[i].style.display = 'none';
+	 	}
+	 	boton.style.display = '';
+	 	document.getElementById(id).style.display = 'block';
+
+	}
+
+	function consentChosed() {
+		console.log(extStatus+' '+iplePay+' '+stateform);
+		//extStatus;iplePay;stateform
+		if (extStatus == 'Y' && iplePay == 'NOT' && stateform == 'N') {document.getElementById('consent1').style.display = 'block'}
+		if (extStatus == 'Y' && iplePay == 'NOT' && stateform == 'Y') {document.getElementById('consent4').style.display = 'block'}
+		  if (extStatus == 'C' && iplePay == 'Y' && stateform == 'N') {document.getElementById('consent5').style.display = 'block'}	
+		  if (extStatus == 'C' && iplePay == 'Y' && stateform == 'Y') {document.getElementById('consent6').style.display = 'block'}
+		  if (extStatus == 'C' && iplePay == 'N' && stateform == 'N') {document.getElementById('consent2').style.display = 'block'}
+		  if (extStatus == 'C' && iplePay == 'N' && stateform == 'Y') {document.getElementById('consent3').style.display = 'block'}
+		if (extStatus == 'N' && iplePay == 'NOT' && stateform == 'N') {document.getElementById('consent2').style.display = 'block'}
+		if (extStatus == 'N' && iplePay == 'NOT' && stateform == 'Y') {document.getElementById('consent3').style.display = 'block'}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dragElement(document.getElementById("botonmovible"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+</script>
+<style>
+	.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+/* Modal Content/Box */
+	.modal-content {
+		background-color: #fefefe;
+		margin: 15% auto; /* 15% from the top and centered */
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%; /* Could be more or less, depending on screen size */
+	}
+
+	/* The Close Button */
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+
+</style>
+<script>
+	// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>
